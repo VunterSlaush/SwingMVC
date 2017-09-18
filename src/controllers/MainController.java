@@ -181,5 +181,6 @@ public class MainController {
                     listener.onDelete(tableView, list.get(selected));
             }
         });
+        tableView.setVisible(true);
     }
 }
