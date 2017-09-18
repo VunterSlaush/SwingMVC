@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-sep-2017 20:56:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Viajes" name="models.Viaje" optimistic-lock="version" schema="dbo" table="viajes">
+    <composite-id class="models.ViajesId" name="id">
+      <key-property name="turista" type="string">
+        <column length="36" name="turista"/>
+      </key-property>
+      <key-property name="vuelo" type="string">
+        <column length="36" name="vuelo"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="models.Turista" fetch="select" insert="false" name="turistas" update="false">
+      <column length="36" name="turista" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="models.Vuelo" fetch="select" insert="false" name="vuelos" update="false">
+      <column length="36" name="vuelo" not-null="true"/>
+    </many-to-one>
+    <property name="clase" type="serializable">
+      <column name="clase" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

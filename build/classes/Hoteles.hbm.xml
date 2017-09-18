@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-sep-2017 20:56:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Viajes" name="models.Hotel" optimistic-lock="version" schema="dbo" table="hoteles">
+    <id name="id" type="string">
+      <column length="36" name="id"/>
+      
+    </id>
+    <property name="nombre" type="serializable">
+      <column name="nombre"/>
+    </property>
+    <property name="direccion" type="serializable">
+      <column name="direccion"/>
+    </property>
+    <property name="ciudad" type="serializable">
+      <column name="ciudad"/>
+    </property>
+    <property name="telefono" type="serializable">
+      <column name="telefono"/>
+    </property>
+    <property name="disponibilidad" type="java.lang.Integer">
+      <column name="disponibilidad"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://Slaush-PC:1433;databaseName=Viajes</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.password">6221</property>
+    <mapping class="models.Viaje" file="" jar="" package="models" resource="Viajes.hbm.xml"/>
+    <mapping class="models.Hotel" file="" jar="" package="models" resource="Hoteles.hbm.xml"/>
+    <mapping class="models.Hospedaje" file="" jar="" package="models" resource="Hospedajes.hbm.xml"/>
+    <mapping class="models.Sucursal" file="" jar="" package="models" resource="Sucursales.hbm.xml"/>
+    <mapping class="models.Turista" file="" jar="" package="models" resource="Turistas.hbm.xml"/>
+    <mapping class="models.Vuelo" file="" jar="" package="models" resource="Vuelos.hbm.xml"/>
+    <mapping class="models.Contrato" file="" jar="" package="models" resource="Contratos.hbm.xml"/>
+    <mapping class="models.Admin" package="models" resource="Admins.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
