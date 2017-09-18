@@ -10,13 +10,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Admin;
 import org.hibernate.exception.ConstraintViolationException;
+import utils.TableListener;
 import views.LoginView;
+import views.TableView;
 
 /**
  *
  * @author Slaush
  */
-public class AdminFormController {
+public class AdminFormController implements TableListener<Admin> {
   private static AdminFormController instance;
 
   private AdminFormController()
@@ -71,4 +73,14 @@ public class AdminFormController {
       
       // TODO Success 
   }
+
+    @Override
+    public void onEdit(TableView view, Admin selected) {
+       
+    }
+
+    @Override
+    public void onDelete(TableView view, Admin selected) {
+        
+    }
 }

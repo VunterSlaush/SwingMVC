@@ -22,14 +22,15 @@ import javax.persistence.Table;
 )
 public class Turista  implements java.io.Serializable {
 
-
-     private String id;
-     private String nombre;
-     private String apellido;
-     private String direccion;
-     private String telefono;
-
-
+    private String id;
+    private String nombre;
+    private String apellido;
+    private String direccion;
+    private String telefono;
+    
+    public static final String [] properties = new String [] {"nombre", "apellido","direccion","telefono"};
+    public static final String [] asColumns = new String [] {"Nombre", "Apellido", "Direccion", "Telefono"};
+    
     public Turista() {
     }
 
@@ -93,6 +94,8 @@ public class Turista  implements java.io.Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+
 
 }
 

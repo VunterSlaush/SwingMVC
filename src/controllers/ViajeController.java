@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import models.Viaje;
+import utils.TableListener;
+import views.TableView;
+
 /**
  *
  * @author Slaush
  */
-public class ViajeController {
+public class ViajeController implements TableListener<Viaje> {
 
   private static ViajeController instance;
 
@@ -34,4 +38,14 @@ public class ViajeController {
   {
 
   }
+
+    @Override
+    public void onEdit(TableView view, Viaje selected) {
+       
+    }
+
+    @Override
+    public void onDelete(TableView view, Viaje selected) {
+        
+    }
 }

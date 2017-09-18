@@ -30,8 +30,11 @@ public class Hotel  implements java.io.Serializable {
      private String telefono;
      private Integer disponibilidad;
      
-     public Hotel() {
-        }
+    public static final String [] properties = {"nombre","direccion","ciudad","telefono","disponibilidad"}; 
+    public static final String [] asColumns = {"Nombre","Direccion","Ciudad","Telefono","Disponibilidad"};
+    
+    public Hotel() {
+    }
 
 	
     public Hotel(String id) {

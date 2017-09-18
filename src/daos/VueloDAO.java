@@ -5,11 +5,13 @@
  */
 package daos;
 
+import models.Vuelo;
+
 /**
  *
  * @author Slaush
  */
-public class VueloDAO {
+public class VueloDAO extends HibernateDAO<Vuelo> {
   private static VueloDAO instance;
 
   private VueloDAO()

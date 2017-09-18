@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import models.Vuelo;
+import utils.TableListener;
+import views.TableView;
+
 /**
  *
  * @author Slaush
  */
-public class VueloController {
+public class VueloController implements TableListener<Vuelo> {
 
   private static VueloController instance;
 
@@ -34,4 +38,14 @@ public class VueloController {
   {
 
   }
+
+    @Override
+    public void onEdit(TableView view, Vuelo selected) {
+       
+    }
+
+    @Override
+    public void onDelete(TableView view, Vuelo selected) {
+        
+    }
 }

@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import models.Contrato;
+import utils.TableListener;
+import views.TableView;
+
 /**
  *
  * @author Slaush
  */
-public class ContratoController {
+public class ContratoController implements TableListener<Contrato> {
 
   private static ContratoController instance;
 
@@ -34,4 +38,14 @@ public class ContratoController {
   {
 
   }
+
+    @Override
+    public void onEdit(TableView view, Contrato selected) {
+        
+    }
+
+    @Override
+    public void onDelete(TableView view, Contrato selected) {
+        
+    }
 }

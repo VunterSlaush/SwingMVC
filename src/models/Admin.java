@@ -34,7 +34,10 @@ public class Admin implements java.io.Serializable {
     
     private String username;
     private String password;
-
+    
+    public static final String [] properties = {"username"};
+    public static final String [] asColumns = {"Cedula"};
+    
     public Admin() {
     }
 

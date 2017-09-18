@@ -28,7 +28,8 @@ public class Contrato  implements java.io.Serializable {
      private ContratoId id;
      private Sucursal sucursales;
      private Turista turistas;
-
+     public static final String [] properties = {"sucursal","turista"};
+     public static final String [] asColumns = {"Sucursal","Turista"};
     public Contrato() {
     }
 

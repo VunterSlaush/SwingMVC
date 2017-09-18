@@ -31,7 +31,10 @@ public class Hospedaje  implements java.io.Serializable {
      private Turista turista;
      private Date llegada;
      private Date partida;
-
+     
+     public static final String [] properties = {"hotel","turista","llegada","partida"};
+     public static final String [] asColumns = {"Hotel","Turista","Llegada","Partida"};
+     
     public Hospedaje() {
     }
 

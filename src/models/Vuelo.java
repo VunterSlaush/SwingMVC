@@ -40,7 +40,9 @@ public class Vuelo  implements java.io.Serializable {
      private int puestos;
      private int puestosTuristas;
      private Set viajeses = new HashSet(0);
-
+     
+     public static final String [] properties = {"fecha","hora","origen","destino","puestos","puestosTuristas"};
+     public static final String [] asColumns = {"Fecha","Hora","Origen","Destino","Puestos Totales","Puestos de Turista"};
 
     public Vuelo() {
     }

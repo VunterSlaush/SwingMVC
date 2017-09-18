@@ -9,13 +9,15 @@ import daos.SucursalDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Sucursal;
+import utils.TableListener;
 import views.SucursalView;
+import views.TableView;
 
 /**
  *
  * @author Slaush
  */
-public class SucursalController {
+public class SucursalController implements TableListener<Sucursal>{
   
   private static SucursalController instance;
 
@@ -67,4 +69,14 @@ public class SucursalController {
       // TODO SUCCESS
      
   }
+
+    @Override
+    public void onEdit(TableView view, Sucursal selected) {
+        
+    }
+
+    @Override
+    public void onDelete(TableView view, Sucursal selected) {
+       
+    }
 }

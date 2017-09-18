@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import models.Hospedaje;
+import utils.TableListener;
+import views.TableView;
+
 /**
  *
  * @author Slaush
  */
-public class HospedajeController {
+public class HospedajeController implements TableListener<Hospedaje> {
 
   private static HospedajeController instance;
 
@@ -34,4 +38,14 @@ public class HospedajeController {
   {
 
   }
+
+    @Override
+    public void onEdit(TableView view, Hospedaje selected) {
+        
+    }
+
+    @Override
+    public void onDelete(TableView view, Hospedaje selected) {
+        
+    }
 }

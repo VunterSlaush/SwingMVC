@@ -5,11 +5,13 @@
  */
 package daos;
 
+import models.Hotel;
+
 /**
  *
  * @author Slaush
  */
-public class HotelDAO {
+public class HotelDAO extends HibernateDAO<Hotel>{
   private static HotelDAO instance;
 
   private HotelDAO()

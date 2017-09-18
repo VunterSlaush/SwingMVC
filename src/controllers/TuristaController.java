@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import models.Turista;
+import utils.TableListener;
+import views.TableView;
+
 /**
  *
  * @author Slaush
  */
-public class TuristaController {
+public class TuristaController implements TableListener<Turista> {
 
   private static TuristaController instance;
 
@@ -34,4 +38,15 @@ public class TuristaController {
   {
 
   }
+
+    @Override
+    public void onEdit(TableView view, Turista selected) {
+        
+    }
+
+    @Override
+    public void onDelete(TableView view, Turista selected) {
+        
+    }
+
 }

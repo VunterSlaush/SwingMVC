@@ -31,7 +31,8 @@ public class Sucursal  implements java.io.Serializable {
      private String direccion;
      private String telefono;
 
-
+    public static final String [] properties = {"direccion","telefono"}; 
+    public static final String [] asColumns = {"Direccion","Telefono"};
     public Sucursal() {
     }
 

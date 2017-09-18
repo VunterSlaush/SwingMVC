@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import models.Hotel;
+import utils.TableListener;
+import views.TableView;
+
 /**
  *
  * @author Slaush
  */
-public class HotelController {
+public class HotelController implements TableListener<Hotel> {
 
   private static HotelController instance;
 
@@ -34,4 +38,14 @@ public class HotelController {
   {
 
   }
+
+    @Override
+    public void onEdit(TableView view, Hotel selected) {
+        
+    }
+
+    @Override
+    public void onDelete(TableView view, Hotel selected) {
+        
+    }
 }
