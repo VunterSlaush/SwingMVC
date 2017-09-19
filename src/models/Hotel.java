@@ -5,6 +5,7 @@ package models;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,8 +41,8 @@ public class Hotel  implements java.io.Serializable {
     public Hotel(String id) {
         this.id = id;
     }
-    public Hotel(String id, String nombre, String direccion, String ciudad, String telefono, Integer disponibilidad) {
-       this.id = id;
+    public Hotel(String nombre, String direccion, String ciudad, String telefono, Integer disponibilidad) {
+       this.id = UUID.randomUUID().toString();
        this.nombre = nombre;
        this.direccion = direccion;
        this.ciudad = ciudad;

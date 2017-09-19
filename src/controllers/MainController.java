@@ -53,7 +53,6 @@ public class MainController {
       addAsignarActions(view);
       addVerActions(view);
       view.setVisible(true);
-      
   }
 
     private void addVerActions(MainView view) {
@@ -128,6 +127,30 @@ public class MainController {
 
     private void addAsignarActions(MainView view) {
         
+        view.hospedaje.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HospedajeController.getInstance().initCreate();
+            }
+        });
+        
+        view.contrato.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ContratoController.getInstance().initCreate();
+            }
+        });
+        
+        view.viaje.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViajeController.getInstance().initCreate();
+            }
+        });
+        
     }
 
     private void addRegistrarActions(MainView view) {
@@ -145,6 +168,30 @@ public class MainController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SucursalController.getInstance().initCreate();
+            }
+        });
+        
+         view.Vuelo.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VueloController.getInstance().initCreate();
+            }
+        });
+        
+        view.turista.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TuristaController.getInstance().initCreate();
+            }
+        });
+        
+        view.hotel.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HotelController.getInstance().initCreate();
             }
         });
     }

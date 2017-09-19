@@ -5,9 +5,14 @@
  */
 package controllers;
 
+import daos.VueloDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 import models.Vuelo;
 import utils.TableListener;
 import views.TableView;
+import views.VueloView;
 
 /**
  *
@@ -31,9 +36,59 @@ public class VueloController implements TableListener<Vuelo> {
 
   public void initCreate()
   {
+      final VueloView view = new VueloView();
+      view.registrar.addActionListener(new ActionListener() {
 
+          @Override
+          public void actionPerformed(ActionEvent e) 
+          {
+            if(!isFieldsEmpty(view) && validAmounts(view))
+            {
+                Vuelo v = fieldsToVuelo(view);
+                createVuelo(v);
+                view.dispose();
+                // TODO Success
+                System.out.println("CREATE SUCCESS");
+            }
+              System.out.println("CREATE NOT SUCCESS"); 
+                // TODO SHOW ERROR;
+          }
+      });
+      view.setVisible(true);
   }
 
+  private boolean isFieldsEmpty(VueloView view)
+  {
+      return view.destino.getText().isEmpty() || 
+             view.fecha.getText().isEmpty() ||
+             view.origen.getText().isEmpty() ||
+             view.hora.getText().isEmpty();
+       
+  }
+  
+  private boolean validAmounts(VueloView view)
+  {
+      int totales = (int)view.totales.getValue();
+      int turistas = (int)view.turistas.getValue();
+      return totales > turistas && totales > 0;
+  }
+  
+  private void createVuelo(Vuelo v)
+  {
+      VueloDAO.getInstance().insert(v);
+  }
+  
+  private Vuelo fieldsToVuelo(VueloView view)
+  {
+      Vuelo t = new Vuelo(view.fecha.getText(),
+                              view.hora.getText(),
+                              view.origen.getText(),
+                              view.destino.getText(),
+                              (int)view.totales.getValue(),
+                              (int)view.turistas.getValue());
+      return t;
+  }
+  
   public void initEdit()
   {
 

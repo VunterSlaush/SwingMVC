@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,13 +34,12 @@ public class Vuelo  implements java.io.Serializable {
 
      private String id;
 
-     private Date fecha;
+     private String fecha;
      private String hora;
      private String origen;
      private String destino;
      private int puestos;
      private int puestosTuristas;
-     private Set viajeses = new HashSet(0);
      
      public static final String [] properties = {"fecha","hora","origen","destino","puestos","puestosTuristas"};
      public static final String [] asColumns = {"Fecha","Hora","Origen","Destino","Puestos Totales","Puestos de Turista"};
@@ -48,8 +48,8 @@ public class Vuelo  implements java.io.Serializable {
     }
 
 	
-    public Vuelo( Date fecha, String hora, String origen, String destino, int puestos, int puestosTuristas) {
-
+    public Vuelo( String fecha, String hora, String origen, String destino, int puestos, int puestosTuristas) {
+        this.id = UUID.randomUUID().toString();
         this.fecha = fecha;
         this.hora = hora;
         this.origen = origen;
@@ -72,11 +72,11 @@ public class Vuelo  implements java.io.Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name="fecha", nullable=false, length=10)
-    public Date getFecha() {
+    public String getFecha() {
         return this.fecha;
     }
     
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -130,14 +130,6 @@ public class Vuelo  implements java.io.Serializable {
         this.puestosTuristas = puestosTuristas;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vuelos")
-    public Set getViajeses() {
-        return this.viajeses;
-    }
-    
-    public void setViajeses(Set viajeses) {
-        this.viajeses = viajeses;
-    }
 
 }
 

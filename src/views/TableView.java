@@ -30,7 +30,6 @@ public class TableView extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        title = new javax.swing.JLabel();
         editar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
 
@@ -49,10 +48,6 @@ public class TableView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("jLabel1");
-
         editar.setText("Editar");
 
         eliminar.setText("Eliminar");
@@ -62,7 +57,6 @@ public class TableView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addComponent(title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -73,9 +67,7 @@ public class TableView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 11, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -93,6 +85,5 @@ public class TableView extends javax.swing.JFrame {
     public javax.swing.JButton eliminar;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable table;
-    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

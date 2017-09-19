@@ -5,9 +5,13 @@
  */
 package controllers;
 
+import daos.TuristaDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import models.Turista;
 import utils.TableListener;
 import views.TableView;
+import views.TuristaView;
 
 /**
  *
@@ -19,7 +23,7 @@ public class TuristaController implements TableListener<Turista> {
 
   private TuristaController()
   {
-      super();
+    super();
   }
 
   public static TuristaController getInstance()
@@ -31,22 +35,70 @@ public class TuristaController implements TableListener<Turista> {
 
   public void initCreate()
   {
+      final TuristaView view = new TuristaView();
+      view.registrar.addActionListener(new ActionListener() {
 
+          @Override
+          public void actionPerformed(ActionEvent e) 
+          {
+            if(!isFieldsEmpty(view))
+            {
+                Turista t = fieldsToTurista(view);
+                createTurista(t);
+                view.dispose();
+                // TODO Success
+                System.out.println("CREATE SUCCESS");
+            }
+              System.out.println("CREATE NOT SUCCESS"); 
+                // TODO SHOW ERROR;
+                
+          }
+      });
+      view.setVisible(true);
   }
 
   public void initEdit()
   {
 
   }
+  
+  private boolean isFieldsEmpty(TuristaView view)
+  {
+      return view.nombre.getText().isEmpty() || 
+             view.apellido.getText().isEmpty() ||
+             view.direccion.getText().isEmpty() ||
+             view.telefono.getText().isEmpty();
+  }
+  
+  private Turista fieldsToTurista(TuristaView view)
+  {
+      Turista t = new Turista(view.nombre.getText(),
+                              view.apellido.getText(),
+                              view.direccion.getText(),
+                              view.telefono.getText());
+      return t;
+  }
+  
+  private void createTurista(Turista t)
+  {
+      TuristaDAO.getInstance().insert(t);
+  }
+  
+  private void editTurista(Turista t, String id)
+  {
+    t.setId(id);
+    TuristaDAO.getInstance().update(t);
+  }
+  
+    @Override
+  public void onEdit(TableView view, Turista selected) {
+        
+  }
 
     @Override
-    public void onEdit(TableView view, Turista selected) {
-        
-    }
-
-    @Override
-    public void onDelete(TableView view, Turista selected) {
-        
-    }
+  public void onDelete(TableView view, Turista selected) 
+  {
+      
+  }
 
 }

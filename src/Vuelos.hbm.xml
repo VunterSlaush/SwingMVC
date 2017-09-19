@@ -5,21 +5,19 @@
   <class catalog="Viajes" name="models.Vuelo" optimistic-lock="version" schema="dbo" table="vuelos">
     <id name="id" type="string">
       <column length="36" name="id"/>
-      <generator class="foreign">
-        <param name="property">vuelos</param>
-      </generator>
+      <generator class="assigned"/>
     </id>
     
-    <property name="fecha" type="date">
+    <property name="fecha" type="string">
       <column length="10" name="fecha" not-null="true"/>
     </property>
     <property name="hora" type="string">
       <column length="10" name="hora" not-null="true"/>
     </property>
-    <property name="origen" type="serializable">
+    <property name="origen" type="string">
       <column name="origen" not-null="true"/>
     </property>
-    <property name="destino" type="serializable">
+    <property name="destino" type="string">
       <column name="destino" not-null="true"/>
     </property>
     <property name="puestos" type="int">
