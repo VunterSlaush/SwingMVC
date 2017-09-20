@@ -27,15 +27,19 @@ public class Viaje  implements java.io.Serializable {
      private ViajesId id;
      private Turista turistas;
      private Vuelo vuelo;
-     private Serializable clase;
-
+     private String clase;
+     
+     
+    public static final String [] properties = {"turista","vuelo","clase"}; 
+    public static final String [] asColumns = {"Turista","Vuelo","Clase"}; 
     public Viaje() {
     }
 
-    public Viaje(ViajesId id, Turista turistas, Vuelo vuelo, Serializable clase) {
-       this.id = id;
+    public Viaje(Turista turistas, Vuelo vuelo, String clase) {
+       this.id = new ViajesId(turistas.getId(),vuelo.getId());
        this.turistas = turistas;
        this.vuelo = vuelo;
+      
        this.clase = clase;
     }
    
@@ -59,6 +63,15 @@ public class Viaje  implements java.io.Serializable {
         return this.turistas;
     }
     
+    public String getTurista() {
+        return this.turistas.getNombre() + this.turistas.getApellido();
+    }
+    
+    public String getVuelo()
+    {
+        return this.vuelo.getOrigen() + " a " + this.vuelo.getDestino();
+    }
+    
     public void setTuristas(Turista turistas) {
         this.turistas = turistas;
     }
@@ -75,11 +88,11 @@ public class Viaje  implements java.io.Serializable {
 
     
     @Column(name="clase", nullable=false)
-    public Serializable getClase() {
+    public String getClase() {
         return this.clase;
     }
     
-    public void setClase(Serializable clase) {
+    public void setClase(String clase) {
         this.clase = clase;
     }
 

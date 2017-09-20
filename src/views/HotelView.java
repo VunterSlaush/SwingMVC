@@ -5,6 +5,8 @@
  */
 package views;
 
+import models.Hotel;
+
 /**
  *
  * @author Slaush
@@ -145,7 +147,16 @@ public class HotelView extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
+    public void setHotel(Hotel h)
+    {
+        ciudad.setText(h.getCiudad());
+        direccion.setText(h.getDireccion());
+        plazas.setValue(h.getDisponibilidad());
+        telefono.setText(h.getTelefono());
+        nombre.setText(h.getNombre());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton cancelar;
     public javax.swing.JTextField ciudad;

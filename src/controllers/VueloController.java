@@ -89,18 +89,38 @@ public class VueloController implements TableListener<Vuelo> {
       return t;
   }
   
-  public void initEdit()
+  public void initEdit(Vuelo vuelo)
   {
+      final VueloView view = new VueloView();
+      view.setVuelo(vuelo);
+      view.registrar.addActionListener(new ActionListener() {
 
+          @Override
+          public void actionPerformed(ActionEvent e) 
+          {
+            if(!isFieldsEmpty(view) && validAmounts(view))
+            {
+                Vuelo v = fieldsToVuelo(view);
+                v.setId(vuelo.getId());
+                VueloDAO.getInstance().update(v);
+                view.dispose();
+                // TODO Success
+                System.out.println("CREATE SUCCESS");
+            }
+              System.out.println("CREATE NOT SUCCESS"); 
+                // TODO SHOW ERROR;
+          }
+      });
+      view.setVisible(true);
   }
 
     @Override
     public void onEdit(TableView view, Vuelo selected) {
-       
+       initEdit(selected);
     }
 
     @Override
     public void onDelete(TableView view, Vuelo selected) {
-        
+        VueloDAO.getInstance().delete(selected);
     }
 }

@@ -79,18 +79,38 @@ public class HotelController implements TableListener<Hotel> {
         HotelDAO.getInstance().insert(hotel);
     }
     
-    public void initEdit()
+    public void initEdit(Hotel hotel)
     {
+        HotelView view = new HotelView();
+        view.setHotel(hotel);
+        view.registrar.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                if(!isFieldsEmpty(view))
+                {
+                    Hotel t = fieldsToHotel(view);
+                    t.setId(hotel.getId());
+                    HotelDAO.getInstance().update(t);
+                    view.dispose();
+                    // TODO Success
+                    System.out.println("CREATE SUCCESS");
+                }
+                  System.out.println("CREATE NOT SUCCESS"); 
+                    // TODO SHOW ERROR;
+            }
+        });
+        view.setVisible(true);
     }
 
     @Override
     public void onEdit(TableView view, Hotel selected) {
-        
+        initEdit(selected);
     }
 
     @Override
     public void onDelete(TableView view, Hotel selected) {
-        
+        HotelDAO.getInstance().delete(selected);
     }
 }

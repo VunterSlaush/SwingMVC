@@ -6,6 +6,8 @@
 
 package views;
 
+import models.Sucursal;
+
 /**
  *
  * @author Slaush
@@ -109,6 +111,12 @@ public class SucursalView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
+    
+    public void setSucursal(Sucursal s)
+    {
+        direccion.setText(s.getDireccion());
+        telefono.setText(s.getTelefono());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;

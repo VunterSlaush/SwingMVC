@@ -5,6 +5,8 @@
  */
 package views;
 
+import models.Vuelo;
+
 /**
  *
  * @author Slaush
@@ -160,7 +162,18 @@ public class VueloView extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
       dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
+    
+    public void setVuelo(Vuelo vuelo)
+    {
+        destino.setText(vuelo.getDestino());
+        origen.setText(vuelo.getOrigen());
+        fecha.setText(vuelo.getFecha());
+        hora.setText(vuelo.getHora());
+        totales.setValue(vuelo.getPuestos());
+        turistas.setValue(vuelo.getPuestosTuristas());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton cancelar;
     public javax.swing.JTextField destino;

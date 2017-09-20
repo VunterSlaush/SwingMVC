@@ -5,6 +5,8 @@
  */
 package views;
 
+import models.Turista;
+
 /**
  *
  * @author Slaush
@@ -129,7 +131,16 @@ public class TuristaView extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
+    
+    public void setTurista(Turista t)
+    {
+        apellido.setText(t.getApellido());
+        nombre.setText(t.getNombre());
+        direccion.setText(t.getDireccion());
+        telefono.setText(t.getTelefono());
+        
+    }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField apellido;

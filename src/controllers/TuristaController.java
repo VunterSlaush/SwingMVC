@@ -57,10 +57,7 @@ public class TuristaController implements TableListener<Turista> {
       view.setVisible(true);
   }
 
-  public void initEdit()
-  {
 
-  }
   
   private boolean isFieldsEmpty(TuristaView view)
   {
@@ -84,21 +81,42 @@ public class TuristaController implements TableListener<Turista> {
       TuristaDAO.getInstance().insert(t);
   }
   
-  private void editTurista(Turista t, String id)
+  public void initEdit(Turista turista)
   {
-    t.setId(id);
-    TuristaDAO.getInstance().update(t);
+      TuristaView view = new TuristaView();
+      view.setTurista(turista);
+      view.registrar.addActionListener(new ActionListener() {
+
+          @Override
+          public void actionPerformed(ActionEvent e) 
+          {
+            if(!isFieldsEmpty(view))
+            {
+                Turista t = fieldsToTurista(view);
+                t.setId(turista.getId());
+                TuristaDAO.getInstance().update(t);
+                view.dispose();
+                // TODO Success
+                System.out.println("CREATE SUCCESS");
+            }
+              System.out.println("CREATE NOT SUCCESS"); 
+                // TODO SHOW ERROR;
+                
+          }
+      });
+     view.setVisible(true);
   }
+  
   
     @Override
   public void onEdit(TableView view, Turista selected) {
-        
+     initEdit(selected);
   }
 
     @Override
   public void onDelete(TableView view, Turista selected) 
   {
-      
+      TuristaDAO.getInstance().delete(selected);
   }
 
 }

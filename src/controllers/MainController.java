@@ -11,17 +11,23 @@ import ca.odell.glazedlists.GlazedLists;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.swing.EventTableModel;
 import daos.AdminDAO;
+import daos.ContratoDAO;
+import daos.HospedajeDAO;
 import daos.HotelDAO;
 import daos.SucursalDAO;
 import daos.TuristaDAO;
+import daos.ViajeDAO;
 import daos.VueloDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import models.Admin;
+import models.Contrato;
+import models.Hospedaje;
 import models.Hotel;
 import models.Sucursal;
 import models.Turista;
+import models.Viaje;
 import models.Vuelo;
 import utils.TableListener;
 import views.MainView;
@@ -122,6 +128,47 @@ public class MainController {
             }
         });
         
+        view.hospedajes.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+               showTable(Hospedaje.class,
+                         Hospedaje.properties,
+                         Hospedaje.asColumns,
+                         HospedajeDAO.getInstance().getAll(),
+                         HospedajeController.getInstance());     
+            }
+        });
+        
+        
+        view.contrataciones.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+               showTable(Contrato.class,
+                         Contrato.properties,
+                         Contrato.asColumns,
+                         ContratoDAO.getInstance().getAll(),
+                         ContratoController.getInstance());     
+            }
+        });
+        
+        view.viajes.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+               showTable(Viaje.class,
+                         Viaje.properties,
+                         Viaje.asColumns,
+                         ViajeDAO.getInstance().getAll(),
+                         ViajeController.getInstance());     
+            }
+        });
+        
+        
        
     }
 
@@ -215,8 +262,12 @@ public class MainController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selected = tableView.table.getSelectedRow();
-                if (selected >= 0) 
+                if (selected >= 0)
+                {
+                    tableView.dispose();
                     listener.onEdit(tableView, list.get(selected));
+                } 
+                    
             }
         });
         
@@ -224,8 +275,13 @@ public class MainController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selected = tableView.table.getSelectedRow();
-                if (selected >= 0) 
+                if (selected >= 0)
+                {
                     listener.onDelete(tableView, list.get(selected));
+                    list.remove(selected);
+                } 
+                    
+               
             }
         });
         tableView.setVisible(true);

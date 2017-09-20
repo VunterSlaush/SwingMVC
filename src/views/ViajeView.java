@@ -5,6 +5,8 @@
  */
 package views;
 
+import javax.swing.ButtonGroup;
+
 /**
  *
  * @author Slaush
@@ -17,6 +19,9 @@ public class ViajeView extends javax.swing.JFrame {
     public ViajeView() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        ButtonGroup group = new ButtonGroup();
+        group.add(clase_turista);
+        group.add(clase_primera);
     }
 
     /**

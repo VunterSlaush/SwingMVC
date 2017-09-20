@@ -33,8 +33,8 @@ public class Contrato  implements java.io.Serializable {
     public Contrato() {
     }
 
-    public Contrato(ContratoId id, Sucursal sucursales, Turista turistas) {
-       this.id = id;
+    public Contrato(Sucursal sucursales, Turista turistas) {
+       this.id = new ContratoId(turistas.getId(),sucursales.getId());
        this.sucursales = sucursales;
        this.turistas = turistas;
     }
@@ -52,7 +52,16 @@ public class Contrato  implements java.io.Serializable {
     public void setId(ContratoId id) {
         this.id = id;
     }
+    
+    public String getTurista()
+    {
+        return this.turistas.getNombre() + this.turistas.getApellido();
+    }
 
+    public String getSucursal()
+    {
+        return this.sucursales.getDireccion();
+    }
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="sucursal", nullable=false, insertable=false, updatable=false)
     public Sucursal getSucursales() {

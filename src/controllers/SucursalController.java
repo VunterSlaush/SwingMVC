@@ -52,31 +52,56 @@ public class SucursalController implements TableListener<Sucursal>{
     final SucursalView view = new SucursalView();
     view.title.setText("Editar Sucursal");
     view.registrar.setText("Editar");
+    view.setSucursal(sucursal);
+    view.registrar.addActionListener(new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (emptyFields(view)) {
+                //TODO Errro
+                return;
+            }
+            
+            Sucursal s = fieldsToSucursal(view);
+            s.setId(sucursal.getId());
+            SucursalDAO.getInstance().update(s);
+            view.dispose();
+            // TODO Success
+        }
+    });
+    view.setVisible(true);
   }
   
   public void createSucursal(SucursalView view)
   {
-      String dir = view.direccion.getText();
-      String tlf = view.telefono.getText();
-      if (dir.isEmpty() || tlf.isEmpty()) {
+      if (!emptyFields(view)) {
           //TODO ERROR
           return;
       }
-      Sucursal s = new Sucursal(dir,tlf);
 
+      Sucursal s = fieldsToSucursal(view);
       SucursalDAO.getInstance().insert(s);
       view.dispose();
       // TODO SUCCESS
      
   }
-
+  private Sucursal fieldsToSucursal(SucursalView view)
+  {
+    return new Sucursal(view.direccion.getText(),view.telefono.getText());
+  }
+  
+  private boolean emptyFields(SucursalView view)
+  {
+      return view.direccion.getText().isEmpty() || view.telefono.getText().isEmpty();
+  }
+  
     @Override
     public void onEdit(TableView view, Sucursal selected) {
-        
+        initEdit(selected);
     }
 
     @Override
     public void onDelete(TableView view, Sucursal selected) {
-       
+       SucursalDAO.getInstance().delete(selected);
     }
 }

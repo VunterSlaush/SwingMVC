@@ -6,6 +6,7 @@
 package controllers;
 
 import daos.TuristaDAO;
+import daos.ViajeDAO;
 import daos.VueloDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import java.util.List;
 import models.Turista;
 import models.Viaje;
 import models.Vuelo;
+import utils.Functions;
 import utils.TableListener;
 import views.TableView;
 import views.ViajeView;
@@ -23,55 +25,54 @@ import views.ViajeView;
  */
 public class ViajeController implements TableListener<Viaje> {
 
-  private static ViajeController instance;
+    private static ViajeController instance;
 
-  private ViajeController()
-  {
-      super();
-  }
+    private ViajeController()
+    {
+        super();
+    }
 
-  public static ViajeController getInstance()
-  {
-      if(instance == null)
-          instance = new ViajeController();
-      return instance;
-  }
+    public static ViajeController getInstance()
+    {
+        if(instance == null)
+            instance = new ViajeController();
+        return instance;
+    }
 
-  public void initCreate()
-  {
-      ViajeView view = new ViajeView();
-      final List<Turista> turistas = loadTuristasToView(view);
-      final List<Vuelo> vuelos = loadVuelosToView(view);
-      view.registrar.addActionListener(new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-              // TODO !! 
-          }
-      });
-  }
-  
-  private List<Turista> loadTuristasToView(ViajeView view)
-  {
-      List<Turista> turistas = TuristaDAO.getInstance().getAll();
-      for (Turista t : turistas) {
-          view.turista.addItem(t.getNombre() + " " +t.getApellido());
-      }
-      return turistas;
-  }
-  
-  private List<Vuelo> loadVuelosToView(ViajeView view)
-  {
-      List<Vuelo> vuelos = VueloDAO.getInstance().getAll();
-      for (Vuelo t : vuelos) {
-          view.turista.addItem(t.getOrigen() + " a " +t.getDestino()+" - "+t.getFecha()+" "+t.getHora());
-      }
-      return vuelos;
-  }
-  
-  public void initEdit()
-  {
+    public void initCreate()
+    {
+        ViajeView view = new ViajeView();
+        view.turista.removeAllItems();
+        view.vuelo.removeAllItems();
+        view.clase_primera.setSelected(true);
+        final List<Turista> turistas = Functions.loadTuristasCombo(view.turista);
+        final List<Vuelo> vuelos = Functions.loadVuelosToCombo(view.vuelo);
+        view.registrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Viaje v = fieldsToViaje(view,turistas,vuelos);
+                ViajeDAO.getInstance().insert(v);
+                view.dispose();
+                //TODO success
+            }
+        });
+        view.setVisible(true);
+    }
+    
+    private Viaje fieldsToViaje(ViajeView view, List<Turista> turistas, 
+                                List<Vuelo> vuelos)
+    {
+        String clase = view.clase_primera.isSelected() ? "primera" : "turista";
+        return new Viaje(turistas.get(view.turista.getSelectedIndex()),
+                         vuelos.get(view.vuelo.getSelectedIndex()),
+                         clase);
+    }
+    
 
-  }
+    public void initEdit()
+    {
+
+    }
 
     @Override
     public void onEdit(TableView view, Viaje selected) {
@@ -80,6 +81,6 @@ public class ViajeController implements TableListener<Viaje> {
 
     @Override
     public void onDelete(TableView view, Viaje selected) {
-        
+        ViajeDAO.getInstance().delete(selected);
     }
 }

@@ -55,7 +55,7 @@ public class Sucursal  implements java.io.Serializable {
 
     
     @Column(name="direccion", nullable=false)
-    public Serializable getDireccion() {
+    public String getDireccion() {
         return this.direccion;
     }
     
@@ -65,7 +65,7 @@ public class Sucursal  implements java.io.Serializable {
 
     
     @Column(name="telefono", nullable=false)
-    public Serializable getTelefono() {
+    public String getTelefono() {
         return this.telefono;
     }
     

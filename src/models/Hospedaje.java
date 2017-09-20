@@ -29,8 +29,8 @@ public class Hospedaje  implements java.io.Serializable {
      private HospedajeId id;
      private Hotel hotel;
      private Turista turista;
-     private Date llegada;
-     private Date partida;
+     private String llegada;
+     private String partida;
      
      public static final String [] properties = {"hotel","turista","llegada","partida"};
      public static final String [] asColumns = {"Hotel","Turista","Llegada","Partida"};
@@ -38,7 +38,7 @@ public class Hospedaje  implements java.io.Serializable {
     public Hospedaje() {
     }
 
-    public Hospedaje(Hotel hotel, Turista turista, Date llegada, Date partida) {
+    public Hospedaje(Hotel hotel, Turista turista, String llegada, String partida) {
        this.id = new HospedajeId(turista.getId(),hotel.getId());
        this.hotel = hotel;
        this.turista = turista;
@@ -62,8 +62,8 @@ public class Hospedaje  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="hotel", nullable=false, insertable=false, updatable=false)
-    public Hotel getHotel() {
-        return this.hotel;
+    public String getHotel() {
+        return this.hotel.getNombre();
     }
     
     public void setHotel(Hotel hotel) {
@@ -72,8 +72,8 @@ public class Hospedaje  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="turista", nullable=false, insertable=false, updatable=false)
-    public Turista getTurista() {
-        return this.turista;
+    public String getTurista() {
+        return this.turista.getNombre() + this.turista.getApellido();
     }
     
     public void setTurista(Turista turista) {
@@ -82,21 +82,21 @@ public class Hospedaje  implements java.io.Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name="llegada", nullable=false, length=10)
-    public Date getLlegada() {
-        return this.llegada;
+    public String getLlegada() {
+        return this.llegada.trim();
     }
     
-    public void setLlegada(Date llegada) {
+    public void setLlegada(String llegada) {
         this.llegada = llegada;
     }
 
     @Temporal(TemporalType.DATE)
     @Column(name="partida", nullable=false, length=10)
-    public Date getPartida() {
-        return this.partida;
+    public String getPartida() {
+        return this.partida.trim();
     }
     
-    public void setPartida(Date partida) {
+    public void setPartida(String partida) {
         this.partida = partida;
     }
 

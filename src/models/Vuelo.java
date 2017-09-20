@@ -73,7 +73,7 @@ public class Vuelo  implements java.io.Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name="fecha", nullable=false, length=10)
     public String getFecha() {
-        return this.fecha;
+        return this.fecha.trim();
     }
     
     public void setFecha(String fecha) {
@@ -83,7 +83,7 @@ public class Vuelo  implements java.io.Serializable {
     
     @Column(name="hora", nullable=false, length=10)
     public String getHora() {
-        return this.hora;
+        return this.hora.trim();
     }
     
     public void setHora(String hora) {
@@ -92,8 +92,8 @@ public class Vuelo  implements java.io.Serializable {
 
     
     @Column(name="origen", nullable=false)
-    public Serializable getOrigen() {
-        return this.origen;
+    public String getOrigen() {
+        return this.origen.trim();
     }
     
     public void setOrigen(String origen) {
@@ -102,8 +102,8 @@ public class Vuelo  implements java.io.Serializable {
 
     
     @Column(name="destino", nullable=false)
-    public Serializable getDestino() {
-        return this.destino;
+    public String getDestino() {
+        return this.destino.trim();
     }
     
     public void setDestino(String destino) {

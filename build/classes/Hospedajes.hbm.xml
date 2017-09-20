@@ -17,10 +17,10 @@
     <many-to-one class="models.Turista" fetch="select" insert="false" name="turista" update="false">
       <column length="36" name="turista" not-null="true"/>
     </many-to-one>
-    <property name="llegada" type="date">
+    <property name="llegada" type="string">
       <column length="10" name="llegada" not-null="true"/>
     </property>
-    <property name="partida" type="date">
+    <property name="partida" type="string">
       <column length="10" name="partida" not-null="true"/>
     </property>
   </class>

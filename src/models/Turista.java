@@ -59,7 +59,7 @@ public class Turista  implements java.io.Serializable {
     
     @Column(name="nombre", nullable=false)
     public String getNombre() {
-        return this.nombre;
+        return this.nombre.trim();
     }
     
     public void setNombre(String nombre) {
@@ -69,7 +69,7 @@ public class Turista  implements java.io.Serializable {
     
     @Column(name="apellido", nullable=false)
     public String getApellido() {
-        return this.apellido;
+        return this.apellido.trim();
     }
     
     public void setApellido(String apellido) {
@@ -78,8 +78,8 @@ public class Turista  implements java.io.Serializable {
 
     
     @Column(name="direccion", nullable=false)
-    public Serializable getDireccion() {
-        return this.direccion;
+    public String getDireccion() {
+        return this.direccion.trim();
     }
     
     public void setDireccion(String direccion) {
@@ -89,7 +89,7 @@ public class Turista  implements java.io.Serializable {
     
     @Column(name="telefono", nullable=false)
     public String getTelefono() {
-        return this.telefono;
+        return this.telefono.trim();
     }
     
     public void setTelefono(String telefono) {

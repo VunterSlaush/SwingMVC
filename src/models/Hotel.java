@@ -64,8 +64,8 @@ public class Hotel  implements java.io.Serializable {
 
     
     @Column(name="nombre")
-    public Serializable getNombre() {
-        return this.nombre;
+    public String getNombre() {
+        return this.nombre.trim();
     }
     
     public void setNombre(String nombre) {
@@ -74,8 +74,8 @@ public class Hotel  implements java.io.Serializable {
 
     
     @Column(name="direccion")
-    public Serializable getDireccion() {
-        return this.direccion;
+    public String getDireccion() {
+        return this.direccion.trim();
     }
     
     public void setDireccion(String direccion) {
@@ -84,8 +84,8 @@ public class Hotel  implements java.io.Serializable {
 
     
     @Column(name="ciudad")
-    public Serializable getCiudad() {
-        return this.ciudad;
+    public String getCiudad() {
+        return this.ciudad.trim();
     }
     
     public void setCiudad(String ciudad) {
@@ -94,8 +94,8 @@ public class Hotel  implements java.io.Serializable {
 
     
     @Column(name="telefono")
-    public Serializable getTelefono() {
-        return this.telefono;
+    public String getTelefono() {
+        return this.telefono.trim();
     }
     
     public void setTelefono(String telefono) {
