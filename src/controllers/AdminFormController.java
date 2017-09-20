@@ -81,6 +81,6 @@ public class AdminFormController implements TableListener<Admin> {
 
     @Override
     public void onDelete(TableView view, Admin selected) {
-        
+        AdminDAO.getInstance().delete(selected);
     }
 }

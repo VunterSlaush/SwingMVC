@@ -96,6 +96,6 @@ public class HospedajeController implements TableListener<Hospedaje> {
 
     @Override
     public void onDelete(TableView view, Hospedaje selected) {
-        
+        HospedajeDAO.getInstance().delete(selected);
     }
 }
