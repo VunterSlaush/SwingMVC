@@ -3,6 +3,7 @@ package models;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -77,7 +78,9 @@ public class Vuelo  implements java.io.Serializable {
     }
     
     public void setFecha(String fecha) {
-        this.fecha = fecha;
+        Date date = new Date(fecha);
+        String newstring = new SimpleDateFormat("dd/MM/yyyy").format(date);
+        this.fecha = newstring;
     }
 
     

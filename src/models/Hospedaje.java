@@ -2,6 +2,7 @@ package models;
 // Generated 17-sep-2017 20:56:56 by Hibernate Tools 4.3.1
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -87,7 +88,9 @@ public class Hospedaje  implements java.io.Serializable {
     }
     
     public void setLlegada(String llegada) {
-        this.llegada = llegada;
+        Date date = new Date(llegada);
+        String newstring = new SimpleDateFormat("dd/MM/yyyy").format(date);
+        this.llegada = newstring;
     }
 
     @Temporal(TemporalType.DATE)
@@ -97,7 +100,9 @@ public class Hospedaje  implements java.io.Serializable {
     }
     
     public void setPartida(String partida) {
-        this.partida = partida;
+        Date date = new Date(partida);
+        String newstring = new SimpleDateFormat("dd/MM/yyyy").format(date);
+        this.partida = newstring;
     }
 
 
