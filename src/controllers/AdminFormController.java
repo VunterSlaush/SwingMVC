@@ -8,6 +8,7 @@ package controllers;
 import daos.AdminDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import models.Admin;
 import org.hibernate.exception.ConstraintViolationException;
 import utils.TableListener;
@@ -55,7 +56,7 @@ public class AdminFormController implements TableListener<Admin> {
       String password = view.passwordField.getText();
       if (username.isEmpty() || password.isEmpty()) 
       {
-          // TODO error 
+          JOptionPane.showMessageDialog(null, "Error al registrar admin, complete los campos", "ERROR", JOptionPane.ERROR_MESSAGE); 
           return;
       }
       
@@ -67,11 +68,11 @@ public class AdminFormController implements TableListener<Admin> {
       }
       catch(ConstraintViolationException ex)
       {
-          // TODO Error
+          JOptionPane.showMessageDialog(null, "Error al registrar", "ERROR", JOptionPane.ERROR_MESSAGE);
          return; 
       }
       
-      // TODO Success 
+      JOptionPane.showMessageDialog(null, "El admin se registró exitosamente", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE); 
   }
 
     @Override

@@ -8,6 +8,7 @@ package controllers;
 import daos.SucursalDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import models.Sucursal;
 import utils.TableListener;
 import views.SucursalView;
@@ -58,7 +59,7 @@ public class SucursalController implements TableListener<Sucursal>{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (emptyFields(view)) {
-                //TODO Errro
+                JOptionPane.showMessageDialog(null, "Error al editar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
@@ -66,7 +67,7 @@ public class SucursalController implements TableListener<Sucursal>{
             s.setId(sucursal.getId());
             SucursalDAO.getInstance().update(s);
             view.dispose();
-            // TODO Success
+            JOptionPane.showMessageDialog(null, "Edición de sucursal con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE); 
         }
     });
     view.setVisible(true);
@@ -75,14 +76,14 @@ public class SucursalController implements TableListener<Sucursal>{
   public void createSucursal(SucursalView view)
   {
       if (!emptyFields(view)) {
-          //TODO ERROR
+          JOptionPane.showMessageDialog(null, "Error al registrar", "ERROR", JOptionPane.ERROR_MESSAGE);
           return;
       }
 
       Sucursal s = fieldsToSucursal(view);
       SucursalDAO.getInstance().insert(s);
       view.dispose();
-      // TODO SUCCESS
+      JOptionPane.showMessageDialog(null, "Registro de sucursal con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE); 
      
   }
   private Sucursal fieldsToSucursal(SucursalView view)

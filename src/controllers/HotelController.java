@@ -8,6 +8,7 @@ package controllers;
 import daos.HotelDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import models.Hotel;
 import utils.TableListener;
 import views.HotelView;
@@ -46,11 +47,11 @@ public class HotelController implements TableListener<Hotel> {
                     Hotel t = fieldsToHotel(view);
                     createHotel(t);
                     view.dispose();
-                    // TODO Success
+                    JOptionPane.showMessageDialog(null, "Registro de hotel con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE); 
                     System.out.println("CREATE SUCCESS");
                 }
                   System.out.println("CREATE NOT SUCCESS"); 
-                    // TODO SHOW ERROR;
+                  JOptionPane.showMessageDialog(null, "Error al registrar", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         });
         view.setVisible(true);
@@ -94,11 +95,11 @@ public class HotelController implements TableListener<Hotel> {
                     t.setId(hotel.getId());
                     HotelDAO.getInstance().update(t);
                     view.dispose();
-                    // TODO Success
+                    JOptionPane.showMessageDialog(null, "Edición con éxito", "Edición con éxito", JOptionPane.INFORMATION_MESSAGE); 
                     System.out.println("CREATE SUCCESS");
                 }
                   System.out.println("CREATE NOT SUCCESS"); 
-                    // TODO SHOW ERROR;
+                  JOptionPane.showMessageDialog(null, "Error al editar", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         });
         view.setVisible(true);

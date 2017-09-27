@@ -8,6 +8,7 @@ package controllers;
 import daos.TuristaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import models.Turista;
 import utils.TableListener;
 import views.TableView;
@@ -46,11 +47,11 @@ public class TuristaController implements TableListener<Turista> {
                 Turista t = fieldsToTurista(view);
                 createTurista(t);
                 view.dispose();
-                // TODO Success
+                JOptionPane.showMessageDialog(null, "Acción con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("CREATE SUCCESS");
             }
               System.out.println("CREATE NOT SUCCESS"); 
-                // TODO SHOW ERROR;
+              JOptionPane.showMessageDialog(null, "Error a de la acción", "ERROR", JOptionPane.ERROR_MESSAGE);
                 
           }
       });
@@ -96,11 +97,11 @@ public class TuristaController implements TableListener<Turista> {
                 t.setId(turista.getId());
                 TuristaDAO.getInstance().update(t);
                 view.dispose();
-                // TODO Success
+                JOptionPane.showMessageDialog(null, "Edición de sucursal con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("CREATE SUCCESS");
             }
               System.out.println("CREATE NOT SUCCESS"); 
-                // TODO SHOW ERROR;
+              JOptionPane.showMessageDialog(null, "Error al editar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 
           }
       });

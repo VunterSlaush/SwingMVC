@@ -9,6 +9,7 @@ import daos.VueloDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import models.Vuelo;
 import utils.TableListener;
 import views.TableView;
@@ -47,11 +48,11 @@ public class VueloController implements TableListener<Vuelo> {
                 Vuelo v = fieldsToVuelo(view);
                 createVuelo(v);
                 view.dispose();
-                // TODO Success
+                JOptionPane.showMessageDialog(null, "Acción con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("CREATE SUCCESS");
             }
               System.out.println("CREATE NOT SUCCESS"); 
-                // TODO SHOW ERROR;
+              JOptionPane.showMessageDialog(null, "Error de la acción", "ERROR", JOptionPane.ERROR_MESSAGE);
           }
       });
       view.setVisible(true);
@@ -104,11 +105,11 @@ public class VueloController implements TableListener<Vuelo> {
                 v.setId(vuelo.getId());
                 VueloDAO.getInstance().update(v);
                 view.dispose();
-                // TODO Success
+                JOptionPane.showMessageDialog(null, "Acción con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("CREATE SUCCESS");
             }
               System.out.println("CREATE NOT SUCCESS"); 
-                // TODO SHOW ERROR;
+              JOptionPane.showMessageDialog(null, "Error a la acción", "ERROR", JOptionPane.ERROR_MESSAGE);
           }
       });
       view.setVisible(true);

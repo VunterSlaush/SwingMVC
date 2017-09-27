@@ -9,6 +9,7 @@ import daos.HospedajeDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.Hospedaje;
 import models.Hotel;
 import models.Turista;
@@ -56,9 +57,9 @@ public class HospedajeController implements TableListener<Hospedaje> {
                   Hospedaje h = fieldsToHospedaje(view, turistas, hoteles);
                   HospedajeDAO.getInstance().insert(h); // TODO TRY + CATCH
                   view.dispose();
-                  //TODO Success
+                  JOptionPane.showMessageDialog(null, "Registro de hospedaje con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE); 
               }
-              // TODO ERROR
+              JOptionPane.showMessageDialog(null, "Error al registrar", "ERROR", JOptionPane.ERROR_MESSAGE);
           }
 
       });

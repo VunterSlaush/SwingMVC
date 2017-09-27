@@ -9,6 +9,7 @@ import daos.ContratoDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.Contrato;
 import models.Sucursal;
 import models.Turista;
@@ -79,6 +80,6 @@ public class ContratoController implements TableListener<Contrato> {
     public void onDelete(TableView view, Contrato selected) {
         ContratoDAO.getInstance().delete(selected);
       
-        //TODO SUCCESS;
+        JOptionPane.showMessageDialog(null, "Se eliminó con éxito el contrato", "Eliminado con éxito", JOptionPane.INFORMATION_MESSAGE); 
     }
 }

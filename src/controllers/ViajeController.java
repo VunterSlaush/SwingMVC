@@ -11,6 +11,7 @@ import daos.VueloDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.Turista;
 import models.Viaje;
 import models.Vuelo;
@@ -53,7 +54,7 @@ public class ViajeController implements TableListener<Viaje> {
                 Viaje v = fieldsToViaje(view,turistas,vuelos);
                 ViajeDAO.getInstance().insert(v);
                 view.dispose();
-                //TODO success
+                JOptionPane.showMessageDialog(null, "Acción con éxito", "Registro con éxito", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         view.setVisible(true);
